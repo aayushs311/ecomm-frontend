@@ -33,7 +33,7 @@ export default function ProductViewModal({ isOpen, setIsOpen, product, isAvailab
                             )}
                             <div className="px-6 pt-10 pb-2">
                                 <DialogTitle as="h1" className="lg:text-3xl sm:text-2xl text-xl font-semibold leading-6 text-gray-800 mb-4">
-                                    {id}
+                                    {productName}
                                 </DialogTitle>
                                 <div className="space-y-2 text-gray-700 pb-4">
                                     <div className="flex items-center justify-between gap-2">

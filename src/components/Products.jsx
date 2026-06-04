@@ -1,33 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import { FaExclamationTriangle } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "../store/actions";
 
 const Products = () => {
-
+    
     const [isLoading, setIsLoading] = useState(false);
-    const [errorMsg, setErrorMsg] = useState(""); 
-    const products = [
-        {
-            productId: 652,
-            productName: "Iphone Xs max",
-            image: "https://placehold.co/600x400",
-            description: "Experience the latest in mobile technology with advanced cameras, powerful processing, and an all-day battery.",
-            quantity: 0,
-            price: 1450.0,
-            discount: 10.0,
-            specialPrice: 1305.0,
-        },
-        {
-            productId: 654,
-            productName: "MacBook Air M2s",
-            image: "https://placehold.co/600x400",
-            description: "Ultra-thin laptop with Apple's M2 chip, providing fast performance in a lightweight, portable design.",
-            quantity: 10,
-            price: 2550.0,
-            discount: 20.0,
-            specialPrice: 2040.0,
-        }
-    ]
+    const [errorMsg, setErrorMsg] = useState("");
+    
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(fetchProducts());
+    }, [dispatch])
+
+    const {products} = useSelector((state) => state.products);
     return (
         <div className="lg:px-14 sm:px-8 px-4 py-14 2xl:w-[90%] 2xl:mx-auto">
             {isLoading ? (

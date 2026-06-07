@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Status from './Status';
 import { MdClose, MdDone } from 'react-icons/md';
 
-export default function ProductViewModal({ isOpen, setIsOpen, product, isAvailable }) {
+const ProductViewModal = ({ isOpen, setIsOpen, product, isAvailable }) => {
     const {
         productId: id,
         productName,
@@ -90,3 +90,5 @@ export default function ProductViewModal({ isOpen, setIsOpen, product, isAvailab
         </>
     )
 }
+
+export default ProductViewModal;

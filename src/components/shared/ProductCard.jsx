@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import ProductViewModal from "./ProductViewModal";
+import truncateText from "../../utils/truncateText";
 
 const ProductCard = (props) => {
     const [isProductModalOpen, setIsProductModalOpen] = useState(false);
@@ -20,12 +21,12 @@ const ProductCard = (props) => {
     return (
         <div className="border rounded-lg shadow-xl overflow-hidden transition-shadow duration-300">
             <div onClick={() => {handleProductView(props)}} className="w-full overflow-hidden aspect-3/2">
-                <img src={props.image} alt={props.productName} className="w-full h-full cursor-pointer transition-transform duration-300 hover:scale-105" />
+                <img src={props.image} alt={truncateText(props.productName, 50)} className="w-full h-full cursor-pointer transition-transform duration-300 hover:scale-105" />
             </div>
             <div className="p-4">
                 <h2 onClick={() => {handleProductView(props)}} className="text-lg font-semibold mb-2 cursor-pointer">{props.productName}</h2>
                 <div className="min-h-20 max-h-20">
-                    <p className="text-gray-600 text-sm">{props.description}</p>
+                    <p className="text-gray-600 text-sm">{truncateText(props.description)}</p>
                 </div>
                 <div className="flex items-center justify-between">
                     {props.specialPrice ? (

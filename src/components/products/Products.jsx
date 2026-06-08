@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import ProductCard from "../shared/ProductCard";
 import { FaExclamationTriangle } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCategories, fetchProducts } from "../../store/actions";
+import { fetchCategories } from "../../store/actions";
 import Filter from "./Filter";
 import useProductFilter from "../../hooks/useProductFilter";
 import Loader from "../shared/Loader";
@@ -17,7 +17,7 @@ const Products = () => {
     useProductFilter();
     useEffect(() => {
         dispatch(fetchCategories());
-    }, []);
+    }, [dispatch]);
 
     return (
         <div className="lg:px-14 sm:px-8 px-4 py-14 2xl:w-[90%] 2xl:mx-auto">

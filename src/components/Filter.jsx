@@ -3,21 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { FaArrowDown, FaArrowUp, FaSearch, FaSync } from 'react-icons/fa';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
-const Filter = () => {
-    const categories = [
-        {
-            "categoryId": 1,
-            "categoryName": "Sports & Fitness"
-        },
-        {
-            "categoryId": 2,
-            "categoryName": "Phones"
-        },
-        {
-            "categoryId": 3,
-            "categoryName": "Clothes"
-        }
-    ]
+const Filter = ({categories}) => {
     const pathname = useLocation().pathname;
     const navigate = useNavigate();
     

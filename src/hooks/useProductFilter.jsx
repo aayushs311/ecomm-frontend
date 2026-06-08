@@ -10,13 +10,18 @@ const useProductFilter = () => {
     useEffect(() => {
         const params = new URLSearchParams(searchParams);
 
+        const currentPage = searchParams.get("page")
+            ? Number(searchParams.get("page"))
+            : 1
         const sortOrder = searchParams.get("sortOrder") || "asc";
-        const categoryParams = searchParams.get("category") || null;
-        const keywordParams = searchParams.get("keyword") || null;
+        const categoryParams = searchParams.get("category") || "";
+        const keywordParams = searchParams.get("keyword") || "";
 
         params.set("sortOrder", sortOrder);
         params.set("category", categoryParams);
         params.set("keyword", keywordParams);
+        params.set("pageNumber", currentPage - 1);
+        
         params.set("sortBy", "price");
 
         if (categoryParams) {
@@ -24,7 +29,7 @@ const useProductFilter = () => {
         }
 
         if (keywordParams) {
-            params.set("keyword", keywordParams)
+            params.set("keyword", keywordParams);
         }
 
         const queryString = params.toString();

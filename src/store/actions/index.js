@@ -45,3 +45,24 @@ export const fetchCategories = () => async (dispatch) => {
         });
     }
 }
+
+export const addToCart = (data, qty = 1) => 
+    (dispatch, getState) => {
+        // 1. Find the product
+        const products = getState.products;
+        const getProduct = products.find(
+            item => item.productId === data.productId
+        )
+        // 2. Check for stock
+        const isQuantityExist = getProduct.quantity >= qty;
+        // 3. If in stock -> add
+        if(isQuantityExist) {
+            dispatch({
+                type: "ADD_TO_CART",
+                payload: {...data, quantity: qty}
+            })
+            localStorage.setItem("cartItems", JSON.stringify(getState().carts.cart))
+        } else {
+            // If not -> error
+        }
+}

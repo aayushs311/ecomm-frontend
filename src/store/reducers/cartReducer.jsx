@@ -6,18 +6,18 @@ const initialState = {
 
 export const cartReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "ADD_TO_CART":
+        case "ADD_TO_CART": {
             const productToAdd = action.payload;
             const existingProduct = state.cart.find(
                 item => item.productId === productToAdd.productId
-            )
-            if(existingProduct) {
+            );
+
+            if (existingProduct) {
                 const updatedCart = state.cart.map(
                     item => {
                         if (item.productId === productToAdd.productId) {
                             return productToAdd;
-                        }
-                        else {
+                        } else {
                             return item;
                         }
                     }
@@ -25,16 +25,17 @@ export const cartReducer = (state = initialState, action) => {
                 return {
                     ...state,
                     cart: updatedCart
-                }
+                };
             } else {
                 const newCart = [...state.cart, productToAdd];
                 return {
                     ...state,
                     cart: newCart
-                }
+                };
             }
-            
+        }
+
         default:
-            break;
+            return state;
     }
 }
